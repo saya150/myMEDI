@@ -1,8 +1,8 @@
 {
-  "name": "eth-marketplace",
+  "name": "myMEDI",
   "version": "0.1.0",
-  "description": "An Ethereum Marketplace",
-  "author": "gregory@dappuniversity.com",
+  "description": "An Medical Record Based on Blockchain",
+  "author": "toufiqsayanika@gmail.com",
   "dependencies": {
     "@openzeppelin/contracts": "^4.5.0",
     "babel-polyfill": "6.26.0",
