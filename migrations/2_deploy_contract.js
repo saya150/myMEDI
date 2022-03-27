@@ -1,5 +1,5 @@
-const Meme = artifacts.require("Meme");
+const Nft = artifacts.require("nftRecord");
 
 module.exports = function(deployer) {
-  deployer.deploy(Meme);
+  deployer.deploy(Nft);
 };
