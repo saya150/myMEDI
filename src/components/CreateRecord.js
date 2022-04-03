@@ -73,37 +73,15 @@ const CreateRecord =() => {
         
          const mintThenList = async (url) => {
           
-        //   const  networks = {
-        //         polygon: {
-        //             chainId: `0x${Number(80001).toString(16)}`,
-        //             chainName: "Polygon Testnet",
-        //             nativeCurrency: {
-        //                 name: "MATIC",
-        //                 symbol: "MATIC",
-        //                 decimals: 18,
-        //             },
-        //             rpcUrls: ["https://rpc-mumbai.maticvigil.com/"],
-        //             blockExplorerUrls: ["https://mumbai.polygonscan.com/"],
-        //         },
-        //     };
-            
+   
             const accounts =await window.ethereum.request({ method: "eth_requestAccounts" });
             setAccount(accounts[0]);
 
             // Get provider from Metamask
            const provider = new ethers.providers.Web3Provider(window.ethereum)
-        //    if (provider.network !== "matic") {
-        //     await window.ethereum.request({
-        //         method: "wallet_addEthereumChain",
-        //         params: [
-        //             {
-        //                 ...networks["polygon"],
-        //             },
-        //         ],
-        //     });
-        // }
-        // Set signer
-          const signer = provider.getSigner()
+       
+           // Set signer
+           const signer = provider.getSigner()
             console.log(signer.getAddress());
             
             try{
@@ -125,19 +103,26 @@ const CreateRecord =() => {
                  // get tokenId of new nft 
                 
                   // add nft to marketplace
-                  
-                await(await View.makeItem(NFT.address,id,values.description,values.name)).wait()
-    
-                }catch(err)
-               {
-                console.log(err)
-            }
+
+                  // approve marketplace to spend nft
+                  await(await NFT.setApprovalForAll(View.address, true)).wait()
+                
+              
+                 let added = await(await View.makeItem(NFT.address,id,values.description,values.name)).wait()
+                 console.log(added)
+                
+                 
+                 console.log(NFT.tokenCount())
+                 console.log(View.itemCount())
+                }catch(e)
+                {
+                 
+                 console.log(e)
+             }
            
           }
          
-            //const uri = `https://ipfs.infura.io/ipfs/${result.path}`
-            // mint nft 
-            
+           
            
         
         

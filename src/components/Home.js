@@ -18,7 +18,7 @@ class Home extends Component {
 
                     <div className="content mr-auto ml-auto">
                         <p>&nbsp;</p>
-                        <div class="row">
+                        <div className="row">
 
                             <hr />
                             <br />
